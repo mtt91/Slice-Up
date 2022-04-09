@@ -1,8 +1,6 @@
 
 # How to work with multiple walls (WIP)
 
-# How to work with multiple walls
-
 One perk of Slice-Up is that it can generate a continuous tool-path for multiple walls.
 
 > **NOTE:** from now on I will refer to multiple walls object as `multiObject`, while we will call each wall  a `loop`
