@@ -1,6 +1,8 @@
 
 # How to work with multiple walls (WIP)
 
+# How to work with multiple walls
+
 One perk of Slice-Up is that it can generate a continuous tool-path for multiple walls.
 
 > **NOTE:** from now on I will refer to multiple walls object as `multiObject`, while we will call each wall  a `loop`
@@ -32,42 +34,46 @@ Let's see an example:
 
 [insert 1st example image]
 
-First we set a `offset distance` equal to the extrusion width for the first `loop`. This will create a thicker wall.
+First we set a `offset distance` equal to the extrusion width for the `first loop`. This will create a thicker wall.
 
 [insert example image]
 
-Next, we set a negative value to the second `loop`, so to make our object wider.
+Next, we set a negative value to the `second loop`, so to make our object wider.
 
 [insert example image]
 
-Finally, we duplicate the first offset on the third `loop` so to also make the outer wall thicker.
+Finally, we duplicate the first offset on the  `third loop` so to also make the outer wall thicker.
 
+### Offset and Waves
 
+>**WARNING:** wave offset is a `loose offset`. It does not strictly respect the offset distance at all points in the path. This can be more or less of a problem depending on your design and/or print technology, so plan accordingly.
 
-Offset and Wave
-WARNING: although you can import waved object, be aware that the wave offset is a ‘loose’ offset, meaning that it does not guarantee to strictly respect the offset distance at all points in the path. This can be more or less of a problem depending on your object and/or technology, so plan accordingly.
+When importing `waves` in the offset module you can choose to force it to use `primary curves`.
 
-Let’s see what happens when  you import a waved object in the offset module:
+Let's consider the some examples:
 
-As before, the first option is two simply offset the wave. This can be used in order to double the wall, or to replicate the same shape in a different location.
-You can toggle the primary copy on to force the offset to use the original curve that underlay the wave structure. 
+[insert relevant image]
 
-This opens up a world of possibilities of what you can do with your toolpath.
+Here we force the offset to a `primary copy` in order to obtain a smooth finish on the inside while having a wave structure on the outside.
 
-In this example, we use the primitive copy on the inner offset, so as to have a wave pattern on the outside, but a smooth finish inside (as it may be desirable for a coffee mug).
-In the following example, we offset the primitive curve to both sides while maintaining the structure to the inside. For example it could be the case of a insulated wall or some kind of wheel that require different gradient of support
+[insert relevant image]
 
-This should have toggled a little lightbulb in your head, and with a bit of creativity a planning you can come out with a hundred different interesting scenario for multiple walls application.
+In this example, we offset the primitive curve to both sides while maintaining the structure to the inside. 
 
-Further modifying multi-objects
-Once you created a multi-object you can export it and continue to work on it as needed.
+### Further modifying multi-objects
+Once you created a `multiObject` you can export it and continue to work on it as usual.
 
-WARNING: the offset module, the combine module, and the spiral module will not accept a multi object upon input. If you do, you will get an error upon import.
+>**NOTE:**  If you try to import a `multiObject` into the `Offset ` module, the `Combine` module or the `Spiral` module will not accept a multi object upon input. 
 
-When importing a multiple wall object, you can only work on one ‘loop’ at the time. You can select the desired loop in the I/O tab. Make sure to toggle ‘show input’ in the Display tab to see all the loops as a reference (white)
-When exporting, you will export the whole object, replacing only the loop that you worked on
+>**NOTE:** when modifying a `multiObject` you can only work on one `loop` at the time.
 
-TIP: you can quickly modify different loops by exporting / re-importing, switching loop each time.
+Upon import of a `multiObject`:
+- Make sure to toggle `show input` in the `Display tab`. This will allow you to see all the `loops` as a reference.
+- Select the desired `loop` in the `I/O tab`
+- Exporting will export the entire `multiObject`, but it will replace the `loop` you just worked on.
+
+>**TIP:** you can quickly modify different `loops` by exporting and  re-importing while switching `loops` in the process.
+
 In this example we use this method to quickly apply the same pattern through the external loops, and a different one in the middle.
 
 
