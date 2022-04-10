@@ -1,5 +1,4 @@
-
-# How to work with multiple walls (WIP)
+# How to work with multiple walls
 
 One perk of Slice-Up is that it can generate a continuous tool-path for multiple walls.
 
@@ -82,21 +81,26 @@ Upon import of a `multiObject`:
 >**TIP:** you can quickly modify different `loops` by exporting and  re-importing while switching `loops` in the process.
 
 ### Applying transformations
-The same workflow applies to modifie your object using transformations. Here is an example of using scale and a parabolic equation to modify the slope of the outer wall.
+The same general workflow applies when importing into `Transform`. In the following example the a `scale` function is used to modify the shape of the outer wall:
 
-[insert example image]
+![image|690x477, 50%](upload://x2twKX9xjgtOlIt7lQWrRQGycrT.jpeg)
 
-You must pay attention when applying a rotation to a `multiObject`
+
+When applying  rotations to a `multiObject` you must pay extra attention to the seam location. 
 
 >**WARNING:** applying a rotation to a single loop will result a mismatch between the seams
 
-In this example we apply a simple 90 degree rotation to the inner loop (the seam are represented by the dots):
+In this example we apply a 90 degree rotation to the middle loop, and you can see how the seams on different loops (white) remain unchanged:
 
-[insert reference image]
+![image|690x409, 50%](upload://w6nqtMOvQt7eRtKty4bNDkAFkuj.jpeg)
 
-To avoid this problem, you can either apply the same rotation to all loops recursively, or (like in the following example), apply the rotation before using the `Offset` module.
 
-### multi-ojects and baseFill
+To avoid this problem, you can either apply the same rotation to all loops recursively, or you can apply the rotation before using the `Offset` module. The latter is showed in this example:
+
+![image|690x480, 50%](upload://z3PEPqvnrXSJkAk8fec7iE16OXE.jpeg)
+
+
+### Multi-ojects and baseFill
 
 In order to build a base for a multi-wall object, simply import it into the `baseFill` module. The outer `loop` will be automaticaly selected and you can proceed as usual.
 
@@ -105,3 +109,5 @@ In order to build a base for a multi-wall object, simply import it into the `bas
 In order to generate gcode for a `multiObject` you must use the `Multi` red module, and pay particular attention to the parameters that control the seam.
 
 [Here](https://discourse.sliceup-3d.com/t/generating-gcode/20) you can find some general information about generating the gcode.
+
+Hope this helped!
