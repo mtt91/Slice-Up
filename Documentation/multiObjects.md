@@ -30,38 +30,44 @@ General offset rules:
 
 Let's see an example:
 
-[insert 1st example image]
-
 First we set a `offset distance` equal to the extrusion width for the `first loop`. This will create a thicker wall.
 
-[insert example image]
+![image|690x493, 50%](upload://nchMvCLrkTjG2itcVzVDzOMjJfn.jpeg)
 
-Next, we set a negative value to the `second loop`, so to make our object wider.
+Next, we select `New Loop` in the `Second Loop` tab and set a negative value for the `Offset Distance`. This will make our object wider.
 
-[insert example image]
+![image|673x500, 50%](upload://iAHth1NP0jxFHOM4vdc8VDdK1f9.jpeg)
 
-Finally, we duplicate the first offset on the  `third loop` so to also make the outer wall thicker.
+Finally, we select `Repeat first Loop`duplicate the first offset in the `Third loop`. This will copy the very first offset, so to also make the outer wall thicker.
+
+![image|688x500, 50%](upload://xTo409AlgC3noGqoc5UaxGmharO.jpeg)
 
 ### Offset and Waves
 
 >**WARNING:** wave offset is a `loose offset`. It does not strictly respect the offset distance at all points in the path. This can be more or less of a problem depending on your design and/or print technology, so plan accordingly.
 
-When importing `waves` in the offset module you can choose to force it to use `primary curves`.
+When importing `waves` in the offset module you can choose to force it to use `primary curves`. If you do this, the new loop looses its `wave` structure.
 
 Let's consider the some examples:
 
-[insert relevant image]
+Here is a simple offset that double the wall thicknes, you can notice it is loose.
+
+![image|690x493, 50%](upload://9jykuJROaFpVvUDBqEHoEHgOZks.jpeg)
 
 Here we force the offset to a `primary copy` in order to obtain a smooth finish on the inside while having a wave structure on the outside.
 
-[insert relevant image]
+![image|690x497, 50%](upload://toz8kYU0bkWVnjO3X7YeBwOmm2j.jpeg)
 
-In this example, we offset the primitive curve to both sides while maintaining the structure to the inside. 
+Finally, we create a new `loop` that is also forced to use the `primary copy`.
+This way, we will keep the original wave structure stays in between two smooth  walls.
+
+![image|684x500, 50%](upload://5QHT8gta7DsoJolcQ3NRWysSIGF.jpeg)
+
 
 ### Further modifying multi-objects
 Once you created a `multiObject` you can export it and continue to work on it as usual.
 
->**NOTE:**  If you try to import a `multiObject` into the `Offset ` module, the `Combine` module or the `Spiral` module will not accept a multi object upon input. 
+>**WARNING:**  You can not import a `multiObject` into the `Offset ` module, the `Combine` module or the `Spiral` module. If you do, you will get a error message. 
 
 >**NOTE:** when modifying a `multiObject` you can only work on one `loop` at the time.
 
@@ -69,6 +75,9 @@ Upon import of a `multiObject`:
 - Make sure to toggle `show input` in the `Display tab`. This will allow you to see all the `loops` as a reference.
 - Select the desired `loop` in the `I/O tab`
 - Exporting will export the entire `multiObject`, but it will replace the `loop` you just worked on.
+
+![image|616x499, 50%](upload://vYUiNQfblEzvNEz4AfQDwyVkWbC.jpeg)
+
 
 >**TIP:** you can quickly modify different `loops` by exporting and  re-importing while switching `loops` in the process.
 
