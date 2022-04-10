@@ -81,16 +81,27 @@ Upon import of a `multiObject`:
 
 >**TIP:** you can quickly modify different `loops` by exporting and  re-importing while switching `loops` in the process.
 
-In this example we use this method to quickly apply the same pattern through the external loops, and a different one in the middle.
+### Applying transformations
+The same workflow applies to modifie your object using transformations. Here is an example of using scale and a parabolic equation to modify the slope of the outer wall.
 
+[insert example image]
 
-The same logic applies when using transformations.
+You must pay attention when applying a rotation to a `multiObject`
 
-In this example we scale our toolpath so that the loops meet each other at top and bottom.
+>**WARNING:** applying a rotation to a single loop will result a mismatch between the seams
 
-WARNING: Applying rotation to a single loop causes a mismatch between the seams of the rotated loop, and the other loops. For this reason, it is recommended to apply the rotation before applying the transformation creating the offset, so that the seam will remain aligned.
+In this example we apply a simple 90 degree rotation to the inner loop (the seam are represented by the dots):
 
-Building a base
-Building a base for multiple walls is no different. When you import multi-objects in the wave modules, the outer loop will be automatically selected as your base boundary.
+[insert reference image]
 
-This concludes the technical aspect of this tutorial, in the next
+To avoid this problem, you can either apply the same rotation to all loops recursively, or (like in the following example), apply the rotation before using the `Offset` module.
+
+### multi-ojects and baseFill
+
+In order to build a base for a multi-wall object, simply import it into the `baseFill` module. The outer `loop` will be automaticaly selected and you can proceed as usual.
+
+### Generating gcode
+
+In order to generate gcode for a `multiObject` you must use the `Multi` red module, and pay particular attention to the parameters that control the seam.
+
+[Here](https://discourse.sliceup-3d.com/t/generating-gcode/20) you can find some general information about generating the gcode.
